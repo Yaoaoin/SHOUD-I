@@ -29,7 +29,7 @@ const negativeAdvice = ["先别冲动，先等等。", "先缓一缓，等条件
 
 const randomCases = {
   bath: {
-    question: "是否现在洗澡？",
+    question: "是否现在去做？",
     options: ["现在执行", "20 分钟后执行", "立即执行，不再拖延"],
   },
   food: {
@@ -41,7 +41,7 @@ const randomCases = {
     options: ["出门散步 30 分钟", "留在室内并做拉伸", "短时外出后返回"],
   },
   buy: {
-    question: "是否购买该小额商品？",
+    question: "要不要买东西？",
     options: ["等待 24 小时后再决定", "可购买，但控制预算", "本次不购买"],
   },
 };
