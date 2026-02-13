@@ -19,7 +19,7 @@
 
       <section class="card" id="core-decision">
         <h2>理性决策</h2>
-        <p class="sub">请描述问题，并按实际情况进行 1（低）至 10（高）的评分。</p>
+        <p class="sub">请描述问题，并按 1（低）至 10（高）评分。标准改为通用维度，适合更多场景。</p>
 
         <label class="field">
           <span>决策主题</span>
@@ -27,14 +27,14 @@
         </label>
 
         <div class="grid">
-          <label class="field"><span>实用性</span><input type="range" min="1" max="10" value="5" data-key="utility" /><em>5</em></label>
-          <label class="field"><span>成本压力（分值越高成本越高）</span><input type="range" min="1" max="10" value="5" data-key="cost" /><em>5</em></label>
-          <label class="field"><span>预期回报</span><input type="range" min="1" max="10" value="5" data-key="reward" /><em>5</em></label>
-          <label class="field"><span>风险程度</span><input type="range" min="1" max="10" value="5" data-key="risk" /><em>5</em></label>
-          <label class="field"><span>长期价值</span><input type="range" min="1" max="10" value="5" data-key="longTerm" /><em>5</em></label>
-          <label class="field"><span>必要性</span><input type="range" min="1" max="10" value="5" data-key="necessity" /><em>5</em></label>
-          <label class="field"><span>精力匹配度</span><input type="range" min="1" max="10" value="5" data-key="energyFit" /><em>5</em></label>
-          <label class="field"><span>不执行的后悔程度</span><input type="range" min="1" max="10" value="5" data-key="regret" /><em>5</em></label>
+          <label class="field"><span>价值收益（做了有多值）</span><input type="range" min="1" max="10" value="5" data-key="utility" /><em>5</em></label>
+          <label class="field"><span>投入成本（钱/时间/精力，越高越贵）</span><input type="range" min="1" max="10" value="5" data-key="cost" /><em>5</em></label>
+          <label class="field"><span>成功把握（成功可能性）</span><input type="range" min="1" max="10" value="5" data-key="reward" /><em>5</em></label>
+          <label class="field"><span>潜在风险（出问题概率+影响）</span><input type="range" min="1" max="10" value="5" data-key="risk" /><em>5</em></label>
+          <label class="field"><span>长期价值（对未来是否有帮助）</span><input type="range" min="1" max="10" value="5" data-key="longTerm" /><em>5</em></label>
+          <label class="field"><span>当前必要性（是不是必须现在做）</span><input type="range" min="1" max="10" value="5" data-key="necessity" /><em>5</em></label>
+          <label class="field"><span>资源匹配度（你现在扛不扛得住）</span><input type="range" min="1" max="10" value="5" data-key="energyFit" /><em>5</em></label>
+          <label class="field"><span>错过代价（不做会不会很后悔）</span><input type="range" min="1" max="10" value="5" data-key="regret" /><em>5</em></label>
         </div>
 
         <button id="analyzeBtn">生成分析结论</button>
