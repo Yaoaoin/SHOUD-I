@@ -3,75 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>星夜决策局 ✨</title>
+    <title>SHOULD I</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="sky-bg" aria-hidden="true">
-      <span class="swirl s1"></span>
-      <span class="swirl s2"></span>
-      <span class="swirl s3"></span>
-      <span class="star st1"></span>
-      <span class="star st2"></span>
-      <span class="star st3"></span>
-      <span class="star st4"></span>
-      <span class="star st5"></span>
-    </div>
-
     <main class="app-shell">
-      <header>
-        <h1>🌌 星夜决策局</h1>
-        <p>你负责输入纠结，我负责给你一个像样的答案。</p>
+      <header class="hero">
+        <p class="brand">SHOULD I</p>
+        <h1>决策辅助工具</h1>
+        <p class="intro">通过结构化评分与快速随机模式，帮助你高效完成日常选择。</p>
       </header>
 
       <section class="card" id="core-decision">
-        <h2>理性决策模式</h2>
-        <p class="sub">把你纠结的事说出来，再按标准打分（1 低 - 10 高）。</p>
+        <h2>理性决策</h2>
+        <p class="sub">请描述问题，并按实际情况进行 1（低）至 10（高）的评分。</p>
 
         <label class="field">
-          <span>你正在纠结什么？</span>
-          <input id="topic" type="text" placeholder="例：今晚要不要出门跑步 / 要不要买新耳机" />
+          <span>决策主题</span>
+          <input id="topic" type="text" placeholder="例如：今晚是否运动 / 是否购买新耳机" />
         </label>
 
         <div class="grid">
           <label class="field"><span>实用性</span><input type="range" min="1" max="10" value="5" data-key="utility" /><em>5</em></label>
-          <label class="field"><span>成本压力（越高越贵）</span><input type="range" min="1" max="10" value="5" data-key="cost" /><em>5</em></label>
-          <label class="field"><span>预期回报 / 快乐</span><input type="range" min="1" max="10" value="5" data-key="reward" /><em>5</em></label>
-          <label class="field"><span>负面影响风险</span><input type="range" min="1" max="10" value="5" data-key="risk" /><em>5</em></label>
+          <label class="field"><span>成本压力（分值越高成本越高）</span><input type="range" min="1" max="10" value="5" data-key="cost" /><em>5</em></label>
+          <label class="field"><span>预期回报</span><input type="range" min="1" max="10" value="5" data-key="reward" /><em>5</em></label>
+          <label class="field"><span>风险程度</span><input type="range" min="1" max="10" value="5" data-key="risk" /><em>5</em></label>
           <label class="field"><span>长期价值</span><input type="range" min="1" max="10" value="5" data-key="longTerm" /><em>5</em></label>
-          <label class="field"><span>是否真正需要</span><input type="range" min="1" max="10" value="5" data-key="necessity" /><em>5</em></label>
-          <label class="field"><span>当前精力匹配度</span><input type="range" min="1" max="10" value="5" data-key="energyFit" /><em>5</em></label>
-          <label class="field"><span>不做会后悔程度</span><input type="range" min="1" max="10" value="5" data-key="regret" /><em>5</em></label>
+          <label class="field"><span>必要性</span><input type="range" min="1" max="10" value="5" data-key="necessity" /><em>5</em></label>
+          <label class="field"><span>精力匹配度</span><input type="range" min="1" max="10" value="5" data-key="energyFit" /><em>5</em></label>
+          <label class="field"><span>不执行的后悔程度</span><input type="range" min="1" max="10" value="5" data-key="regret" /><em>5</em></label>
         </div>
 
-        <button id="analyzeBtn">让星夜给个结论</button>
+        <button id="analyzeBtn">生成分析结论</button>
         <article id="result" class="result hidden"></article>
       </section>
 
       <section class="card" id="random-decision">
-        <h2>随机拍拍板模式</h2>
-        <p class="sub">适合“洗不洗澡”“吃啥”“要不要下楼买奶茶”这种拖延小问题。</p>
+        <h2>快速决策</h2>
+        <p class="sub">适用于低风险、低成本的日常小问题。</p>
 
         <label class="field">
-          <span>快速问题类型</span>
+          <span>问题类型</span>
           <select id="quickType">
-            <option value="bath">要不要去洗澡</option>
-            <option value="food">今天吃什么</option>
-            <option value="goout">要不要出门</option>
-            <option value="buy">要不要买这个小东西</option>
+            <option value="bath">是否现在洗澡</option>
+            <option value="food">今晚吃什么</option>
+            <option value="goout">是否出门</option>
+            <option value="buy">是否购买小额商品</option>
             <option value="custom">自定义是/否问题</option>
           </select>
         </label>
 
         <label class="field hidden" id="customQuestionWrap">
           <span>自定义问题</span>
-          <input id="customQuestion" type="text" placeholder="例：我要不要现在去收拾房间" />
+          <input id="customQuestion" type="text" placeholder="例如：是否现在整理房间" />
         </label>
 
-        <button id="randomBtn">随机决定一下</button>
+        <button id="randomBtn">给出随机结果</button>
         <article id="randomResult" class="result hidden"></article>
       </section>
     </main>
