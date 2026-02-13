@@ -83,6 +83,13 @@ function rand(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+function randWithoutRepeat(arr, previous) {
+  if (!Array.isArray(arr) || arr.length === 0) return "";
+  if (arr.length === 1) return arr[0];
+  const candidates = arr.filter((item) => item !== previous);
+  return rand(candidates.length ? candidates : arr);
+}
+
 function updateRangeValue(el) {
   el.parentElement.querySelector("em").textContent = el.value;
 }
@@ -139,6 +146,8 @@ const quickType = document.getElementById("quickType");
 const customWrap = document.getElementById("customQuestionWrap");
 const randomBtn = document.getElementById("randomBtn");
 const randomResult = document.getElementById("randomResult");
+const lastQuickDecision = {};
+let lastCustomDecision = "";
 
 quickType.addEventListener("change", () => {
   customWrap.classList.toggle("hidden", quickType.value !== "custom");
@@ -151,8 +160,9 @@ randomBtn.addEventListener("click", () => {
 
   if (type === "custom") {
     question = document.getElementById("customQuestion").value.trim() || "该事项";
-    const yes = Math.random() > 0.45;
-    decision = yes ? "建议执行" : "建议暂缓";
+    decision = randWithoutRepeat(["建议执行", "建议暂缓"], lastCustomDecision);
+    lastCustomDecision = decision;
+    const yes = decision === "建议执行";
     randomResult.classList.remove("yes", "no");
     randomResult.classList.add(yes ? "yes" : "no");
     randomResult.innerHTML = `<h3>${question}</h3><p><strong>随机结果：</strong>${decision}</p><p>${
@@ -161,7 +171,8 @@ randomBtn.addEventListener("click", () => {
   } else {
     const item = randomCases[type];
     question = item.question;
-    decision = rand(item.options);
+    decision = randWithoutRepeat(item.options, lastQuickDecision[type]);
+    lastQuickDecision[type] = decision;
     const positive = !decision.includes("不") || decision.includes("不再拖延");
     randomResult.classList.remove("yes", "no");
     randomResult.classList.add(positive ? "yes" : "no");
