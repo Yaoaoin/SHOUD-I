@@ -30,7 +30,16 @@ const negativeAdvice = ["先别冲动，先等等。", "先缓一缓，等条件
 const randomCases = {
   bath: {
     question: "是否现在去做？",
-    options: ["现在执行", "20 分钟后执行", "立即执行，不再拖延"],
+    options: [
+      "现在执行",
+      "立即执行，不再拖延",
+      "10 分钟后开始",
+      "20 分钟后执行",
+      "30 分钟后执行",
+      "1 小时后执行",
+      "今晚稍晚一点再做",
+      "明天再执行",
+    ],
   },
   food: {
     question: "今晚吃什么？",
@@ -51,19 +60,27 @@ const randomCases = {
       "西红柿牛腩饭",
       "三明治加热汤",
       "轻食卷饼",
+      "火锅",
+      "煲仔饭",
+      "酸菜鱼",
+      "新疆大盘鸡拌面",
+      "烤肉拌饭",
+      "虾仁炒饭",
+      "肉酱意面",
+      "日式咖喱蛋包饭",
     ],
   },
   breakfast: {
     question: "明早吃什么？",
-    options: ["豆浆油条", "鸡蛋三明治", "包子配小米粥", "燕麦水果碗", "煎蛋吐司", "肠粉", "馄饨", "手抓饼"],
+    options: ["豆浆油条", "鸡蛋三明治", "包子配小米粥", "燕麦水果碗", "煎蛋吐司", "肠粉", "馄饨", "手抓饼", "豆腐脑配烧饼", "紫米饭团", "牛奶麦片", "小笼包"],
   },
   lunch: {
     question: "中午吃什么？",
-    options: ["卤肉饭", "咖喱鸡饭", "兰州拉面", "烧鸭饭", "麻婆豆腐套餐", "意面", "鸡腿汉堡套餐", "木桶饭"],
+    options: ["卤肉饭", "咖喱鸡饭", "兰州拉面", "烧鸭饭", "麻婆豆腐套餐", "意面", "鸡腿汉堡套餐", "木桶饭", "番茄肥牛饭", "照烧鸡排饭", "重庆小面", "烤肉饭"],
   },
   snack: {
     question: "要不要加个小吃？",
-    options: ["水果酸奶杯", "烤红薯", "关东煮", "鸡蛋仔", "不加餐，喝水就好", "坚果拼盘", "无糖酸奶", "海苔饭团"],
+    options: ["水果酸奶杯", "烤红薯", "关东煮", "鸡蛋仔", "不加餐，喝水就好", "坚果拼盘", "无糖酸奶", "海苔饭团", "香蕉燕麦杯", "全麦面包片", "低糖蛋白棒"],
   },
   drink: {
     question: "今天喝点什么？",
@@ -116,7 +133,7 @@ analyzeBtn.addEventListener("click", () => {
 
   const topPros = [
     `价值收益 ${scores.utility}`,
-    `成功把握 ${scores.reward}`,
+    `成功可能性 ${scores.reward}`,
     `长期价值 ${scores.longTerm}`,
     `当前必要性 ${scores.necessity}`,
     `错过代价 ${scores.regret}`,
@@ -125,7 +142,7 @@ analyzeBtn.addEventListener("click", () => {
     .slice(0, 2)
     .join("、");
 
-  const topCons = [`投入成本 ${scores.cost}`, `潜在风险 ${scores.risk}`]
+  const topCons = [`投入成本 ${scores.cost}`, `翻车风险 ${scores.risk}`]
     .sort((a, b) => Number(b.split(" ")[1]) - Number(a.split(" ")[1]))
     .slice(0, 1)
     .join("、");
