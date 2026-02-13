@@ -25,7 +25,7 @@ const negativeFeedback = [
   "建议先优化条件，再重新评估该事项。",
 ];
 
-const negativeAdvice = ["先别冲动，不要乱花钱啊！！！", "先缓一缓，等条件更好再做。", "先降风险再行动，会更稳。"];
+const negativeAdvice = ["先别冲动，先等等。", "先缓一缓，等条件更好再做。", "先降风险再行动。"];
 
 const randomCases = {
   bath: {
