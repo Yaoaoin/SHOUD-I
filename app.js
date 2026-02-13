@@ -16,12 +16,16 @@ const positiveFeedback = [
   "结论偏正向，可进入实施阶段。",
 ];
 
+const positiveAdvice = ["好选择，稳步推进就行。", "可以做，但记得按预算和节奏来。", "这波可以上，边做边复盘。"];
+
 const negativeFeedback = [
   "综合风险与成本偏高，建议暂缓。",
   "当前条件下不建议立即执行，可先观察。",
   "该决策的负担大于收益，建议延后处理。",
   "建议先优化条件，再重新评估该事项。",
 ];
+
+const negativeAdvice = ["先别冲动，不要乱花钱啊！！！", "先缓一缓，等条件更好再做。", "先降风险再行动，会更稳。"];
 
 const randomCases = {
   bath: {
@@ -71,17 +75,17 @@ analyzeBtn.addEventListener("click", () => {
   const yes = normalized >= 54;
 
   const topPros = [
-    `实用性 ${scores.utility}`,
-    `预期回报 ${scores.reward}`,
+    `价值收益 ${scores.utility}`,
+    `成功把握 ${scores.reward}`,
     `长期价值 ${scores.longTerm}`,
-    `必要性 ${scores.necessity}`,
-    `后悔成本 ${scores.regret}`,
+    `当前必要性 ${scores.necessity}`,
+    `错过代价 ${scores.regret}`,
   ]
     .sort((a, b) => Number(b.split(" ")[1]) - Number(a.split(" ")[1]))
     .slice(0, 2)
     .join("、");
 
-  const topCons = [`成本压力 ${scores.cost}`, `风险程度 ${scores.risk}`]
+  const topCons = [`投入成本 ${scores.cost}`, `潜在风险 ${scores.risk}`]
     .sort((a, b) => Number(b.split(" ")[1]) - Number(a.split(" ")[1]))
     .slice(0, 1)
     .join("、");
@@ -94,6 +98,7 @@ analyzeBtn.addEventListener("click", () => {
     <p><strong>主要支持因素：</strong>${topPros}</p>
     <p><strong>主要限制因素：</strong>${topCons}</p>
     <p>${yes ? rand(positiveFeedback) : rand(negativeFeedback)}</p>
+    <p><strong>一句提醒：</strong>${yes ? rand(positiveAdvice) : rand(negativeAdvice)}</p>
   `;
 });
 
@@ -119,7 +124,7 @@ randomBtn.addEventListener("click", () => {
     randomResult.classList.add(yes ? "yes" : "no");
     randomResult.innerHTML = `<h3>${question}</h3><p><strong>随机结果：</strong>${decision}</p><p>${
       yes ? rand(positiveFeedback) : rand(negativeFeedback)
-    }</p>`;
+    }</p><p><strong>一句提醒：</strong>${yes ? rand(positiveAdvice) : rand(negativeAdvice)}</p>`;
   } else {
     const item = randomCases[type];
     question = item.question;
@@ -129,7 +134,7 @@ randomBtn.addEventListener("click", () => {
     randomResult.classList.add(positive ? "yes" : "no");
     randomResult.innerHTML = `<h3>${question}</h3><p><strong>建议结果：</strong>${decision}</p><p>${
       positive ? rand(positiveFeedback) : rand(negativeFeedback)
-    }</p>`;
+    }</p><p><strong>一句提醒：</strong>${positive ? rand(positiveAdvice) : rand(negativeAdvice)}</p>`;
   }
 
   randomResult.classList.remove("hidden");
